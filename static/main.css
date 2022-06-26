@@ -1,0 +1,20 @@
+
+body {
+  /*background: linear-gradient(#2e02f1,#f30303);*/
+  background-image: url(img/3.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  
+  }
+
+h2{
+  color: white;
+   background: rgba(44, 44, 44, 0.877);
+}
+.logoDP{
+width:300px;
+height: 120px}
+
+

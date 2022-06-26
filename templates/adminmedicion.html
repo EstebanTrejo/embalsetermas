@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <h2>REGISTRO DE PARAMETROS</h2>
+      <div class="card card-body">
+        <form action="{{url_for('add_parametro')}}" method="POST">
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="Ph" placeholder="ph" required>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="Temperatura" placeholder="Temperatura" required>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="Turviedad" placeholder="turviedad" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="Conductividad" placeholder="conductividad" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="OxigenoDisuelto" placeholder="oxigenoDisuelto">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="PotencialRedox" placeholder="PotencialRedox" required>
+              </div>
+ 
+             <div class="form-group">
+                <input type="text" class="form-control" name="SolidosDisueltos" placeholder="SolidosDisueltos" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" name="DQO" placeholder="DQO" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" name="NA" placeholder="NA" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" name="K" placeholder="K" required>
+              </div>
+             
+            <button class="btn btn-dark btn-block">
+              Guardar 
+            </button>
+        </form>
+    </div>
+    </div>
+
+
+            <div class="col-md-7">
+                <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                  <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>PH</td>
+                        <td>Temperatura</td>
+                        <td>Turviedad</td>
+                        <td>Conductividad </td>
+                        <td>Oxigeno Disuelto</td>
+                        <td>Potencial Redox</td>
+                        <td>Solidos Disueltos</td>
+                        <td>DQO</td>
+                        <td>NA</td>
+                        <td>K</td>
+                        <td>Acciones</td>
+                    </tr>
+                  </thead>
+
+    <tbody>
+        {% for medicion in mediciones %}
+        <tr>
+            <td>{{medicion.0}}</td>
+            <td>{{medicion.1}}</td>
+            <td>{{medicion.2}}</td>
+            <td>{{medicion.3}}</td>
+            <td>{{medicion.4}}</td>
+            <td>{{medicion.5}}</td>
+            <td>{{medicion.6}}</td>
+            <td>{{medicion.7}}</td>
+            <td>{{medicion.8}}</td>
+            <td>{{medicion.9}}</td>
+            <td>{{medicion.10}}</td>     
+            <td>
+              <a href="/editarmed/{{medicion.0}}" class="btn btn-dark">Modificar</a>
+              <a href="/eliminarmed/{{medicion.0}}" class="btn btn-danger btn-delete">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<a href="/adminmedicion" class="btn btn-dark">Atras</a>
+
+{% endblock %}
